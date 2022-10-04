@@ -4,31 +4,29 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.sql.Time;
 import java.sql.Timestamp;
 
-
 @Getter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Entity
-public class User {
+public class Reply {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(nullable = false, length = 30)
-    private String username;
-    @Column(nullable = false, length =100)
-    private String password;
-    @Column(nullable = false, length = 50)
-    private String email;
-    @ColumnDefault("'user'")
-    private String role;
+    @Column(nullable = false, length = 200)
+    private String content;
+    @ManyToOne
+    @JoinColumn(name="boaderId")
+    private Boader boader;
+    @ManyToOne
+    @JoinColumn(name="userId")
+    private User user;
     @CreationTimestamp
     private Timestamp createdDate;
+
 }
