@@ -32,8 +32,8 @@ public class Board {
 
     //DB 생성할 필요는 없음
     //mappedBy 연관관계 주인이 아니다.(FK가 아님)
-    //fetch.lazy는 무조건 들고 오는 것이 아닌, 필요할 때 들고옴.
-    @OneToMany(mappedBy="board", fetch = FetchType.LAZY)
+    //fetch.lazy 무조건 들고 오는 것이 아닌, 필요할 때 들고옴.
+    @OneToMany(mappedBy="board", fetch = FetchType.EAGER)
     private List<Reply> reply;
 
     @CreationTimestamp
