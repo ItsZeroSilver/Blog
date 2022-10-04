@@ -26,13 +26,14 @@ public class Board {
     @ColumnDefault("0")
     private int count;
     //FK
-    @ManyToOne //Many = Board, User = One
+    @ManyToOne(fetch = FetchType.EAGER) //Many = Board, User = One
     @JoinColumn(name = "userId")
     private User user;//DB는 오브젝트를 지정할 수 없지만, 자바는 오브젝트를 지정할 수 있다.
 
     //DB 생성할 필요는 없음
     //mappedBy 연관관계 주인이 아니다.(FK가 아님)
-    @OneToMany(mappedBy="board")
+    //fetch.lazy는 무조건 들고 오는 것이 아닌, 필요할 때 들고옴.
+    @OneToMany(mappedBy="board", fetch = FetchType.LAZY)
     private List<Reply> reply;
 
     @CreationTimestamp
