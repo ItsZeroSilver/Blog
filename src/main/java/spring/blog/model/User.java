@@ -1,22 +1,27 @@
 package spring.blog.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
+//@DynamicInsert//null인 칼럼은 제외하고 insert
+//(insert into User (username, password, email, createdDate) values (?, ?, ?, ?);
+//role은 제외
+
+
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,8 +32,8 @@ public class User {
     private String password;
     @Column(nullable = false, length = 50)
     private String email;
-    @ColumnDefault("'user'")
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private RoleType role;
     @CreationTimestamp
     private Timestamp createdDate;
 }
