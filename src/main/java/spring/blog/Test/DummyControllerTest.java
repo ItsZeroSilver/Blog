@@ -37,6 +37,7 @@ public class DummyControllerTest {
         return user;
     }
 
+
     @GetMapping("/dummy/users")
     public List<User> selectAll(){
         return userRepository.findAll();
