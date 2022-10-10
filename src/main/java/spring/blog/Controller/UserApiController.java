@@ -18,7 +18,13 @@ public class UserApiController {
     @PostMapping("/api/user")
     public ResponseDto<Integer> join(@RequestBody User user){
         user.setRole(RoleType.USER);
-        int result = userService.join(user);
-        return new ResponseDto<Integer>(HttpStatus.OK.value(), result);
+        userService.join(user);
+        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+    }
+
+    @PostMapping("/api/user/login")
+    public ResponseDto<Integer> login(@RequestBody User user){
+        User principal = userService.login(user);
+        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
 }

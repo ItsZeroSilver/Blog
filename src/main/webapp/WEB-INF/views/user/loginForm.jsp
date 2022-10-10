@@ -4,7 +4,7 @@
 <form action="/action_page.php">
   <div class="form-group">
     <label for="username">Username</label>
-    <input type="text" class="form-control" placeholder="Enter username" id="username ">
+    <input type="text" class="form-control" placeholder="Enter username" id="username">
   </div>
   <div class="form-group">
     <label for="pwd">Password</label>
@@ -15,11 +15,11 @@
       <input class="form-check-input" type="checkbox"> Remember me
     </label>
   </div>
-  <button type="submit" class="btn btn-primary">로그인</button>
 </form>
+  <button id = "btn-login " class="btn btn-primary">로그인</button>
 </div>
 <br/>
-
+<script src="/blog/js/user.js"></script>
 <%@ include file="../layout/footer.jsp" %>
 
 
