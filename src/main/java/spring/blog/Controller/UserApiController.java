@@ -10,6 +10,8 @@ import spring.blog.dto.ResponseDto;
 import spring.blog.model.RoleType;
 import spring.blog.model.User;
 
+import javax.servlet.http.HttpSession;
+
 @AllArgsConstructor
 @RestController
 public class UserApiController {
@@ -23,8 +25,11 @@ public class UserApiController {
     }
 
     @PostMapping("/api/user/login")
-    public ResponseDto<Integer> login(@RequestBody User user){
-        User principal = userService.login(user);
+    public ResponseDto<Integer> login(@RequestBody User user, HttpSession session){
+        User principal = userService.login(user);//principal 접근주체
+        if (principal != null){
+            session.setAttribute("principal",principal);
+        }
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
 }
