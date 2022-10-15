@@ -9,7 +9,6 @@
     </div>
 </div>
 <br/>
-
 <%@ include file="layout/footer.jsp" %>
 
 

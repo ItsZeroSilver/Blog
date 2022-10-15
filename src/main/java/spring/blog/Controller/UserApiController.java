@@ -23,7 +23,7 @@ public class UserApiController {
         userService.join(user);
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
-
+    /* 전통적인 회원방법
     @PostMapping("/api/user/login")
     public ResponseDto<Integer> login(@RequestBody User user, HttpSession session){
         User principal = userService.login(user);//principal 접근주체
@@ -32,4 +32,5 @@ public class UserApiController {
         }
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
+     */
 }
